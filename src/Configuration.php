@@ -281,6 +281,13 @@ class Configuration
     protected $postRun;
 
     /**
+     * Show body of the commit
+     *
+     * @var bool
+     */
+    protected $showBody = false;
+    
+    /**
      * Constructor.
      */
     public function __construct(array $settings = [])
