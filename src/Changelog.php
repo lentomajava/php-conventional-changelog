@@ -568,6 +568,13 @@ class Changelog
                     }
                     $changelog .= Formatter::clean("* {$description} {$references} {$sha} {$mentions}");
                     $changelog .= PHP_EOL;
+                    
+                    // If the commit includes a body, add it as a nested lines
+                    if ($this->config->getShowBody() && !empty((string) $item->getBody())) {
+                        foreach (explode(PHP_EOL, (string) $item->getBody()) as $row) {
+                            $changelog .= '   ' . Formatter::clean($row) . PHP_EOL;
+                        }
+                    }
                 }
             }
         }

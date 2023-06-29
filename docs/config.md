@@ -47,6 +47,7 @@ dir or use the `--config` option to specify the location of your configuration f
 - **Pre Run**: Run a callback or command before run the script
 - **Post Run**: Run a callback or command after run the script
 - **Merged**: Only include commits whose tips are reachable from HEAD
+- **showBody**: If the commit includes a body, add it as a nested lines
 
 ### Default settings
 
@@ -105,6 +106,7 @@ return [
   'preRun' => null,
   'postRun' => null,
   'merged' => false,
+  'showBody' => false,
 ];
 ```
 
