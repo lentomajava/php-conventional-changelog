@@ -336,6 +336,7 @@ class Configuration
             'releaseCommitMessageFormat' => $this->getReleaseCommitMessageFormat(),
             'preRun' => $this->getPreRun(),
             'postRun' => $this->getPostRun(),
+            'showBody' => $this->getShowBody(),
         ];
 
         $params = array_replace_recursive($defaults, $array);
@@ -405,7 +406,9 @@ class Configuration
             ->setChangelogVersionFormat($params['changelogVersionFormat'])
             // Hooks
             ->setPreRun($params['preRun'])
-            ->setPostRun($params['postRun']);
+            ->setPostRun($params['postRun'])
+            // Body
+            ->setShowBody($params['showBody']);
     }
 
     /**
@@ -936,5 +939,23 @@ class Configuration
     protected function isRegex(string $pattern)
     {
         return @preg_match($pattern, '') !== false;
+    }
+    
+    /**
+     * @return mixed
+     */
+    public function getShowBody()
+    {
+        return $this->showBody;
+    }
+
+    /**
+     * @param mixed $showBody
+     */
+    public function setShowBody($showBody): self
+    {
+        $this->showBody = $showBody;
+
+        return $this;
     }
 }
